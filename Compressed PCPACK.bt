@@ -1,0 +1,37 @@
+//------------------------------------------------
+//--- 010 Editor v15.0.2 Binary Template
+//
+//      File: Spider-Man: Web of Shadows's Compressed PCPACK file
+//   Authors: haru233
+//   Version: 1.0.0
+//   Purpose: Analysing Compressed PCPACK files found in Spider-Man: Web of Shadows
+//  Category: Archives
+// File Mask: .PCPACK
+//  ID Bytes: 4E 43 48 00
+//   History: 
+//------------------------------------------------
+
+// ByteOrder: Little Endian
+
+typedef struct {
+    char magic[4] <bgcolor=cBlue>; // NCH.
+    uint32 CompressedDataSize <bgcolor=cGreen>;
+    uint32 unknown1;
+    uint32 UncompressedDataSize <bgcolor=cYellow>;
+    uint32 unknown2;
+    uint32 unknown3;
+    uint32 CompressedEnd <bgcolor=cWhite>; // Header size (0x20) + CompressedDataSize
+    uint32 IsCompressedFlag <bgcolor=cLtRed>; // 1 is Compressed
+    uint8 Data[CompressedDataSize] <bgcolor=cLtGreen>;
+    
+    // Rest is Padding (A1)
+    
+    // Compression Method is Lzo1X
+    // Max Block Size is 0x80000
+} CompressedBlock;
+
+
+
+
+
+CompressedBlock block;
